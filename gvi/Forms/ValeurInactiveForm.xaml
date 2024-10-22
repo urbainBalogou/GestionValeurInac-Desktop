@@ -1,0 +1,42 @@
+﻿<Window x:Class="gvi.ValeurInactiveForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gvi"
+        mc:Ignorable="d"
+       Title="Valeur_Inactive"  Height="500" Width="900"  WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <DockPanel LastChildFill="False">
+        <StackPanel DockPanel.Dock="Left" Width="137" Background="#FF1288F0">
+            <Label x:Name="Sorties" Foreground="White" Content="Sorties"  Height="35"  FontWeight="Bold" FontSize="14" MouseLeftButtonDown="sorties_MouseLeftButtonDown"/>
+            <Label x:Name="type_val" Foreground="White" Content=" Type Valeur"   Height="35"  FontWeight="Bold" FontSize="14" MouseLeftButtonDown="type_val_MouseLeftButtonDown"/>
+            <Label x:Name="txtcommune" Foreground="White" Content="Commune"  Height="35"  FontWeight="Bold" FontSize="14" MouseLeftButtonDown=" txtcommune_MouseLeftButtonDown"/>
+            <Label x:Name="txtdemandes" Foreground="White" Content="Demandes" Height="35"  FontWeight="Bold" FontSize="14" MouseLeftButtonDown="txtdemandes_MouseLeftButtonDown"/>
+
+            <Label x:Name="txtentree" Foreground="White" Content="Entrées" Height="35" FontWeight="Bold" FontSize="14"  FontStyle="Normal" MouseLeftButtonDown="txtentree_MouseLeftButtonDown"/>
+            <Label x:Name="employe" Foreground="White" Content="Employés" Height="35" FontWeight="Bold" FontSize="14"  FontStyle="Normal" MouseLeftButtonDown="employe_MouseLeftButtonDown"/>
+            <Label x:Name="txtfonc" Foreground="White" Content="Fonctions" Height="35" FontWeight="Bold" FontSize="14"  FontStyle="Normal" MouseLeftButtonDown="txtfonc_MouseLeftButtonDown"/>
+
+        </StackPanel>
+        <Canvas Width="662">
+            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
+            <Button Margin="250,30,20,0" Content="Rafraichir" Click="Button_Click"></Button>
+            <Button x:Name="btnvi" Content="Ajouter une nouvelle valeur"  Canvas.Left="450" Width="220" FontStyle="Italic" Background="{x:Null}" BorderThickness="1,1,1,1" FontWeight="UltraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnvi_Click"/>
+            <ListView x:Name="listViewValeurs" Canvas.Top="44" Canvas.Left="10" Width="763" Height="434" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDoubleClick="listViewValeurs_MouseDoubleClick_1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nature" DisplayMemberBinding="{Binding TypeValeur.Nature}" Width="150"/>
+                        <GridViewColumn Header="Valeur Faciale" DisplayMemberBinding="{Binding TypeValeur.ValeurFaciale}" Width="150"/>
+                        <GridViewColumn Header="Nombre par Feuillet" DisplayMemberBinding="{Binding nombre_de_valeur_par_feuillet_ou_carnet}" Width="150"/>
+                        <GridViewColumn Header="Nombre de Feuillets" DisplayMemberBinding="{Binding nombre_de_feuillets}" Width="150"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+
+        </Canvas>
+
+    </DockPanel>
+
+</Window>

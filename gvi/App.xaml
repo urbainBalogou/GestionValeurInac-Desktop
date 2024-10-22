@@ -1,0 +1,12 @@
+﻿<Application x:Class="gvi.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:gvi"
+             StartupUri="Authentification/login.xaml" >
+             <!-- StartupUri="AddForms/ajout_entree.xaml"-->
+            
+    <Application.Resources>
+        
+         
+    </Application.Resources>
+</Application>

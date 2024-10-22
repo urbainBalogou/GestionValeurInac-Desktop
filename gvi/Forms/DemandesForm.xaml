@@ -1,0 +1,75 @@
+﻿<Window x:Class="gvi.DemandesForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gvi"
+        mc:Ignorable="d"
+        Title="Demande" Height="500" Width="1023" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <!-- Définition des styles -->
+    <Window.Resources>
+        <!-- Style pour les labels qui agissent comme des liens -->
+        <Style x:Key="LinkLabelStyle" TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="0" Color="#FF707070"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FFFFA500"/>
+                    <!-- Changer de couleur au survol -->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel LastChildFill="False">
+        <!-- Menu de navigation sur la gauche -->
+        <StackPanel DockPanel.Dock="Left" Width="137" Background="#FF1288F0">
+            <Label x:Name="type_val" Content="Type valeur" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="type_val_MouseLeftButtonDown"/>
+            <Label x:Name="txtvaleur" Content="Valeur Inactive" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="txtvaleur_MouseLeftButtonDown" Cursor="Hand"/>
+            <Label x:Name="txtentree" Content="Entrées" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="txtentree_MouseLeftButtonDown"/>
+            <Label x:Name="txtcommune" Content="Commune" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="txtcommune_MouseLeftButtonDown"/>
+            <Label x:Name="sorties" Content="Sorties" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="sorties_MouseLeftButtonDown"/>
+            <Label x:Name="employe" Content="Employés" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="employe_MouseLeftButtonDown"/>
+            <Label x:Name="txtfonc" Content="Fonctions" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="txtfonc_MouseLeftButtonDown"/>
+        </StackPanel>
+
+        <!-- Contenu principal -->
+        <Canvas Width="762">
+            <!-- Zone de recherche -->
+            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
+
+            <!-- Bouton pour ajouter une nouvelle demande -->
+            <Button Name="ajd" Content="Ajouter une nouvelle demande" Canvas.Left="450" Width="220" 
+                    FontStyle="Italic" Background="{x:Null}" FontWeight="UltraBold" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Click="ajd_Click"/>
+
+            <!-- Liste des demandes avec ListView -->
+            <ListView Canvas.Top="58" Canvas.Left="10" Width="865" Height="423" 
+                      ItemsSource="{Binding Demandes}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Commune" DisplayMemberBinding="{Binding Commune}" Width="150"/>
+                        <GridViewColumn Header="Type Valeur" DisplayMemberBinding="{Binding TypeValeur}" Width="150"/>
+                        <GridViewColumn Header="Valeur Inactive" DisplayMemberBinding="{Binding Valeur}" Width="150"/>
+                        <GridViewColumn Header="Quantité Demandée" DisplayMemberBinding="{Binding Quantite}" Width="120"/>
+                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" Width="150"/>
+                        <GridViewColumn Header="Statut" DisplayMemberBinding="{Binding Statut}" Width="100"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Canvas>
+    </DockPanel>
+</Window>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Authentification\signup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="AddForms\ajout_commune.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddForms\ajout_demande.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddForms\ajout_employe.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddForms\ajout_entree.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddForms\ajout_fonction.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddForms\ajout_sorties.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddForms\ajout_type.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddForms\ajout_valeur.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Authentification\login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Authentification\signup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\CommuneForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\DemandesForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\EmployesForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\EntréesForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\FonctionForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\SortiesForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\TypeValeurForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\ValeurInactiveForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UpdateForms\update_demande.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UpdateForms\update_entree.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UpdateForms\update_sortie.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
