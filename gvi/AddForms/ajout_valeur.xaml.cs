@@ -31,6 +31,7 @@ namespace gvi
         private void RemplirChamp()
         {
             txtannuler.Content = "Supprimer";
+            txtentete.Content = "Modification";
             ValeurFeuilletTextBox.Text = _valeur.nombre_de_valeur_par_feuillet_ou_carnet.ToString();
             NombreFeuilletsTextBox.Text = _valeur.nombre_de_feuillets.ToString();
 

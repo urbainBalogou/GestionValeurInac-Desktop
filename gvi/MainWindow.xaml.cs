@@ -1,5 +1,6 @@
 ﻿using gvi.Authentification;
 using gvi.Data;
+using gvi.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -115,7 +116,7 @@ namespace gvi
 
         private void txtcreate_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            signup log = new signup();
+            AdminInterface log = new AdminInterface();
             log.Owner = this;
             log.Show();
           

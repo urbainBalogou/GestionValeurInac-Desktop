@@ -42,9 +42,17 @@ namespace gvi.Models
         [ForeignKey("FonctionId")]
         public Fonction Fonction { get; set; }
 
-        public override string ToString()
+        //public override string ToString()
+        //{
+        //    return $"{Nom} {Prenom} - Fonction: {Fonction.Libelle}";
+        //}
+        public string NomComplet
         {
-            return $"{Nom} {Prenom} - Fonction: {Fonction.Libelle}";
+            get
+            {
+                return $"{Nom ?? "Nom manquant"} {Prenom ?? "Prénom manquant"}";
+            }
         }
+
     }
 }

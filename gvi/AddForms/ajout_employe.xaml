@@ -24,7 +24,7 @@
 
         <!-- Header -->
         <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Fill="#FF1C8FDA"/>
-        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="AJOUT EMPLOYE" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28" FontWeight="Bold" FontFamily="Arial"/>
+        <Label x:Name="txtentete" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="AJOUT EMPLOYE" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28" FontWeight="Bold" FontFamily="Arial"/>
 
         <!-- Nom -->
         <Label Grid.Column="0" Grid.Row="1" Content="Nom:" FontSize="16"/>

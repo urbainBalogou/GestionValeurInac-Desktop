@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Ajout de demande" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+        <TextBlock x:Name="txtentete" Text="Ajout de demande" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
 
         <StackPanel Grid.Row="1" Margin="0,0,0,20">
             <Grid Margin="0,0,0,10">
@@ -25,12 +25,12 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Commune : " VerticalAlignment="Center"/>
-                <ComboBox x:Name="ComboBoxCommune" Grid.Column="1" Width="200" Margin="10,0,20,0"/>
+                <ComboBox x:Name="ComboBoxCommune" Grid.Column="1" Width="200" Margin="10,0,20,0" SelectionChanged="ComboBoxCommune_SelectionChanged"/>
                 <TextBlock Grid.Column="2" Text="Date demande : " VerticalAlignment="Center"/>
                 <DatePicker x:Name="datepic" Grid.Column="3" Width="200" Margin="10,0,0,0"/>
             </Grid>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <CheckBox x:Name="estTraite" Content="Est traitée" Margin="0,0,20,0"/>
+                <CheckBox x:Name="estTraitee" Content="Est traitée" Margin="0,0,20,0"/>
                 <CheckBox x:Name="enCours" Content="En cours"/>
             </StackPanel>
         </StackPanel>
@@ -44,7 +44,7 @@
             <Border BorderBrush="Gray" BorderThickness="1" Margin="0,0,10,0">
                 <StackPanel>
                     <TextBlock Text="Valeurs disponibles" FontWeight="Bold" Margin="5"/>
-                    <ListBox x:Name="ValeursList" Height="300" Margin="5">
+                    <ListBox x:Name="ValeursList" Height="300" Margin="5" MouseDoubleClick="ValeursList_MouseDoubleClick_1">
                         <!-- Les items seront ajoutés dynamiquement -->
                     </ListBox>
                 </StackPanel>
@@ -53,11 +53,13 @@
             <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel>
                     <TextBlock Text="Valeurs sélectionnées" FontWeight="Bold" Margin="5"/>
-                    <DataGrid x:Name="ValeursSelectionneesGrid" AutoGenerateColumns="False" Height="300" Margin="5">
+                    <DataGrid x:Name="ValeursSelectionneesGrid" AutoGenerateColumns="False" 
+          ItemsSource="{Binding ValeursSelectionnees}"
+          CellEditEnding="ValeursSelectionneesGrid_CellEditEnding" MouseDoubleClick="ValeursSelectionneesGrid_MouseDoubleClick_1" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Valeur" Binding="{Binding Nom}" Width="2*"/>
-                            <DataGridTextColumn Header="Quantité" Binding="{Binding Quantite}" Width="*"/>
-                            <DataGridTextColumn Header="Montant Total" Binding="{Binding MontantTotal}" Width="*"/>
+                            <DataGridTextColumn Header="Valeur" Binding="{Binding Valeur.Nom}" Width="2*" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Quantité" Binding="{Binding Quantite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Header="Montant Total" Binding="{Binding MontantTotal, Mode=OneWay}" IsReadOnly="True"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
@@ -65,8 +67,8 @@
         </Grid>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
-            <Button Content="Enregistrer" Padding="10,5" Margin="0,0,10,0"/>
-            <Button Content="Annuler" Padding="10,5"/>
+            <Button x:Name="btnEnregistrer" Content="Enregistrer" Padding="10,5" Margin="0,0,10,0" Click="btnEnregistrer_Click"/>
+            <Button x:Name="btnannuler" Content="Annuler" Padding="10,5" Click="btnannuler_Click"/>
         </StackPanel>
     </Grid>
 </Window>

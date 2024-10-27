@@ -25,17 +25,14 @@
             <Button x:Name="btnsort" Content="Ajouter une nouvelle sortie" Canvas.Left="450" Width="220" FontStyle="Italic" Background="{x:Null}" BorderThickness="1,1,1,1" FontWeight="UltraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnsort_Click"/>
 
             <!-- ListView with GridView -->
-            <ListView Height="434" Width="966" Canvas.Top="44" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <ListView x:Name="listViewSorties" Canvas.Top="50" Canvas.Left="10" Height="434" Width="872" VerticalAlignment="Center" HorizontalAlignment="Left" MouseDoubleClick="listViewDemandes_MouseDoubleClick">
                 <ListView.View>
                     <GridView>
-                        <!-- Replace these columns with properties from your Sortie class -->
-                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
-                        <GridViewColumn Header="Type Valeur" DisplayMemberBinding="{Binding TypeValeur}" Width="150"/>
-                        <GridViewColumn Header="Valeur Inactive" DisplayMemberBinding="{Binding Valeur}" Width="150"/>
                         <GridViewColumn Header="Commune" DisplayMemberBinding="{Binding Commune}" Width="150"/>
-                        <GridViewColumn Header="Demande" DisplayMemberBinding="{Binding Demande}" Width="150"/>
+                        <GridViewColumn Header="Valeurs Inactives" DisplayMemberBinding="{Binding Valeurs}" Width="250"/>
+                        <GridViewColumn Header="Quantités" DisplayMemberBinding="{Binding Quantites}" Width="150"/>
+                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateSortie}" Width="150"/>
                         <GridViewColumn Header="Employé" DisplayMemberBinding="{Binding Employe}" Width="150"/>
-                        <GridViewColumn Header="Quantité" DisplayMemberBinding="{Binding Quantite}" Width="100"/>
                     </GridView>
                 </ListView.View>
             </ListView>

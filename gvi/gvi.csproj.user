@@ -10,6 +10,9 @@
     <Compile Update="Authentification\signup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Forms\AdminInterface.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddForms\ajout_commune.xaml">
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Authentification\signup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\AdminInterface.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\CommuneForm.xaml">

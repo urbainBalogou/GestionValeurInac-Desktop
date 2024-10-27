@@ -36,6 +36,7 @@ namespace gvi.AddForms
         private void RemplirChamp()
         {
             txtannuler.Content = "Supprimer";
+            txtentete.Content = "Modification";
             txtcodef.Text = _fonction.CodeFonction;
             txtnomf.Text = _fonction.Libelle;
             champEstRempli = true;

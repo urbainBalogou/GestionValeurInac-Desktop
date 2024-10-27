@@ -43,6 +43,7 @@ namespace gvi
         private void RemplirChamp()
         {
             txtannuler.Content = "Supprimer";
+            txtentete.Content = "Modification";
             txtNom.Text = _employe.Nom;
             txtPrenom.Text = _employe.Prenom;
             txtEmail.Text = _employe.Email;

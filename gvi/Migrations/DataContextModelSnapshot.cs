@@ -499,7 +499,7 @@ namespace gvi.Migrations
             modelBuilder.Entity("gvi.Models.SortieValeur", b =>
                 {
                     b.HasOne("gvi.Models.Sortie", "Sortie")
-                        .WithMany()
+                        .WithMany("Valeurs")
                         .HasForeignKey("SortieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -563,6 +563,11 @@ namespace gvi.Migrations
             modelBuilder.Entity("gvi.Models.Fonction", b =>
                 {
                     b.Navigation("Employes");
+                });
+
+            modelBuilder.Entity("gvi.Models.Sortie", b =>
+                {
+                    b.Navigation("Valeurs");
                 });
 
             modelBuilder.Entity("gvi.Models.TypeValeur", b =>

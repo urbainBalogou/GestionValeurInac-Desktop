@@ -50,23 +50,20 @@
         <Canvas Width="762">
             <!-- Zone de recherche -->
             <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
-
+            <Button x:Name="btnfresh" Content="Rafraichir" Click="btnfresh_Click" Height="29" Canvas.Left="250" Canvas.Top="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <!-- Bouton pour ajouter une nouvelle demande -->
             <Button Name="ajd" Content="Ajouter une nouvelle demande" Canvas.Left="450" Width="220" 
                     FontStyle="Italic" Background="{x:Null}" FontWeight="UltraBold" 
                     HorizontalAlignment="Center" VerticalAlignment="Center" Click="ajd_Click"/>
 
             <!-- Liste des demandes avec ListView -->
-            <ListView Canvas.Top="58" Canvas.Left="10" Width="865" Height="423" 
-                      ItemsSource="{Binding Demandes}" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <ListView x:Name="listViewDemandes" Canvas.Top="50" Canvas.Left="10" Height="434" Width="872" VerticalAlignment="Center" HorizontalAlignment="Left" MouseDoubleClick="listViewDemandes_MouseDoubleClick">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Commune" DisplayMemberBinding="{Binding Commune}" Width="150"/>
-                        <GridViewColumn Header="Type Valeur" DisplayMemberBinding="{Binding TypeValeur}" Width="150"/>
-                        <GridViewColumn Header="Valeur Inactive" DisplayMemberBinding="{Binding Valeur}" Width="150"/>
-                        <GridViewColumn Header="Quantité Demandée" DisplayMemberBinding="{Binding Quantite}" Width="120"/>
-                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" Width="150"/>
-                        <GridViewColumn Header="Statut" DisplayMemberBinding="{Binding Statut}" Width="100"/>
+                        <GridViewColumn Header="Valeurs Inactives" DisplayMemberBinding="{Binding Valeurs}" Width="250"/>
+                        <GridViewColumn Header="Quantités" DisplayMemberBinding="{Binding Quantites}" Width="150"/>
+                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateDemande}" Width="150"/>
                     </GridView>
                 </ListView.View>
             </ListView>

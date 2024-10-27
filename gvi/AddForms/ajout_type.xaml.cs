@@ -21,6 +21,7 @@ namespace gvi
             if (_type != null)
             {
                 RemplirChamp();
+                txtentete.Content = "Modification";
                 txtannuler.Content = "Supprimer";
             }
             else

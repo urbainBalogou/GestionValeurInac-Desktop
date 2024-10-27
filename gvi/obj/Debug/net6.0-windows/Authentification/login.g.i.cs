@@ -68,7 +68,7 @@ namespace gvi.Authentification {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/gvi;V1.0.0.0;component/authentification/login.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/gvi;component/authentification/login.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Authentification\login.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

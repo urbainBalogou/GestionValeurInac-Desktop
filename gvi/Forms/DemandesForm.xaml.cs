@@ -1,4 +1,7 @@
-﻿using System;
+﻿using gvi.Data;
+using gvi.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,13 @@ namespace gvi
     /// </summary>
     public partial class DemandesForm : Window
     {
+        DataContext _context;
+        private Demande _demande;
         public DemandesForm()
         {
             InitializeComponent();
+            _context = new DataContext();
+            LoadDemandes();
         }
 
         private void type_val_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -81,9 +88,55 @@ namespace gvi
 
         private void ajd_Click(object sender, RoutedEventArgs e)
         {
-            ajout_demande ajd = new ajout_demande();
+            ajout_demande ajd = new ajout_demande(_context,_demande);
             ajd.Owner = this;
             ajd.Show();
+        }
+        private void LoadDemandes()
+        {
+            var groupedDemandes = _context.Demandes
+                .Include(d => d.Commune) // Inclure la commune
+                .Include(d => d.Valeurs) // Inclure les valeurs associées
+                .ThenInclude(dv => dv.Valeur) // Inclure les détails de la valeur inactive
+                .ThenInclude(v => v.TypeValeur) // Inclure les détails du type de valeur
+                .AsEnumerable() // Convertir en IEnumerable pour utiliser LINQ en mémoire
+                .Select(d => new
+                {
+                    Demande = d,
+                    Commune = d.Commune?.Nom ?? "Non spécifiée", // Gérer le cas où Commune est null
+                    Valeurs = string.Join(", ", d.Valeurs
+                        .Select(v => v.Valeur?.TypeValeur?.Nature ?? "Valeur non spécifiée")), // Gérer les nullités
+                    Quantites = string.Join(", ", d.Valeurs
+                        .Select(v => v.Quantite.ToString())), // Assurez-vous que Quantite est un entier
+                    DateDemande = d.DateDemande
+                })
+                .ToList();
+
+            listViewDemandes.ItemsSource = groupedDemandes;
+        }
+
+
+        private void btnfresh_Click(object sender, RoutedEventArgs e)
+        {
+            var valeursEntree = _context.Demandes.Include(e => e.Commune).ToList();
+            var valeur = _context.Valeurs
+   .Include(v => v.TypeValeur)
+
+   .ToList();
+            LoadDemandes();
+        }
+
+        private void listViewDemandes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedItem = listViewDemandes.SelectedItem;
+
+            if (selectedItem != null)
+            {
+                var demande = ((dynamic)selectedItem).Demande; // Récupérer l'objet Entree
+                ajout_demande ajout = new ajout_demande(_context, demande);
+                ajout.ShowDialog();
+                LoadDemandes(); // Recharger la liste après modifications éventuelles
+            }
         }
     }
 }

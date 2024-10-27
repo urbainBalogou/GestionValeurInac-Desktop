@@ -24,9 +24,9 @@
                 <DropShadowEffect Color="#FF3068D2" BlurRadius="5" ShadowDepth="4"/>
             </TextBlock.Effect>
         </TextBlock>
-        <Label x:Name="txtcreate" Content="Créer un utilisateur" Margin="0,0,30,86" Grid.RowSpan="2"
+        <Label x:Name="txtcreate" Content="Administration des utilisateurs&#xD;&#xA;" Margin="0,0,30,86" Grid.RowSpan="2"
                FontStyle="Oblique" FontWeight="Light" FontFamily="Brush Script MT" Cursor="Hand"
-               Background="Transparent" Foreground="#FF2556D7" MouseDown="txtcreate_MouseDown" Visibility="Visible" FontSize="36" Width="358"
+               Background="Transparent" Foreground="#FF2556D7" MouseDown="txtcreate_MouseDown" Visibility="Hidden" FontSize="36" Width="415"
                RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" VerticalContentAlignment="Center"/>
 
         <!-- Menu Buttons Section avec design modernisé -->

@@ -19,7 +19,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Fill="#FF1C8FDA"/>
-        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="AJOUT FONCTION" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28" FontWeight="Bold" FontFamily="Arial"/>
+        <Label x:Name="txtentete" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="AJOUT FONCTION" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28" FontWeight="Bold" FontFamily="Arial"/>
         <Label Grid.Column="0" Grid.Row="1" Content="Code Fonction:" FontSize="16"/>
         <TextBox x:Name="txtcodef" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="TextBox" Margin="10,30,10,10" FontSize="14" FontFamily="Calibri Light" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
         <Label Grid.Column="0" Grid.Row="2" Content="Nom:" FontSize="16"/>

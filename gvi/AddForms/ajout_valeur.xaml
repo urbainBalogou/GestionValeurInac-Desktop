@@ -19,7 +19,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Fill="#FF1C8FDA"/>
-        <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="AJOUT VALEUR INACTIVE" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28" FontWeight="Bold" FontFamily="Arial"/>
+        <Label x:Name="txtentete" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="AJOUT VALEUR INACTIVE" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28" FontWeight="Bold" FontFamily="Arial"/>
         <Label Grid.Column="0" Grid.Row="1" Content="Type de valeur:" FontSize="16"/>
         <ComboBox x:Name="TypeValeurComboBox" Grid.Column="0" Margin="133,10,340,10" Grid.Row="1"/>
         <Label Grid.Column="0" Grid.Row="1" Content="Nombre de valeurs par feuillets:" FontSize="16" Margin="10,62,0,0" Grid.RowSpan="2"/>

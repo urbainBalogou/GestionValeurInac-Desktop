@@ -42,6 +42,7 @@ namespace gvi
             if (_context != null && _entree != null)
             {
                 btnannuler.Content = "Supprimer";
+                txtentete.Text = "Modification";
                 RemplirChamp();
             }
         }
@@ -98,9 +99,7 @@ namespace gvi
             }
         }
 
-        private void ValeursSelectionneesGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-        }
+      
 
         private void ValeursSelectionneesGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
