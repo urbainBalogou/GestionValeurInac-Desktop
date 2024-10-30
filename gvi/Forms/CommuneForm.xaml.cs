@@ -26,6 +26,7 @@ namespace gvi
         public CommuneForm()
         {
             InitializeComponent();
+            rechercher.Text = null;
             _context = new DataContext();
             LoadCommunes();
         }
@@ -113,6 +114,41 @@ namespace gvi
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             LoadCommunes();
+        }
+        private void FilterCommunes(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                // Si la recherche est vide, afficher toutes les communes
+                LoadCommunes();
+            }
+            else
+            {
+                // Filtrer les communes dont le nom contient le texte recherché
+                var filteredCommunes = _context.Communes
+                    .ToList()
+                    .Where(c => c.Nom.ToLower().Contains(searchText.ToLower()) || c.CodeCommune.ToLower().Contains(searchText.ToLower()));
+                listViewCommunes.ItemsSource = filteredCommunes;
+            }
+        }
+
+        private System.Threading.Timer _searchTimer;
+        private void rechercher_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                // Annuler le timer précédent s'il existe
+                _searchTimer?.Dispose();
+
+                // Créer un nouveau timer qui se déclenchera après 300ms
+                _searchTimer = new System.Threading.Timer(_ =>
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        FilterCommunes(textBox.Text);
+                    });
+                }, null, 300, System.Threading.Timeout.Infinite);
+            }
         }
     }
 }

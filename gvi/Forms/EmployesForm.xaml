@@ -46,7 +46,7 @@
         </StackPanel>
 
         <Canvas Width="662">
-            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
+            <TextBox x:Name="rechercher" Height="29" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="10" Width="220" TextChanged="rechercher_TextChanged"/>
             <Button Margin="250,30,20,0" Content="Rafraichir" Click="Button_Click" 
                     FontStyle="Italic" Background="{x:Null}" BorderThickness="1" FontWeight="Bold" 
                     HorizontalAlignment="Left" VerticalAlignment="Top"/>

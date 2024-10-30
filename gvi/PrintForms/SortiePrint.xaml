@@ -1,0 +1,37 @@
+﻿<Window x:Class="gvi.PrintForms.SortiePrint"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Impression des Sorties" Height="400" Width="400" WindowStartupLocation="CenterScreen"
+        Background="White">
+
+    <Grid>
+        <!-- Titre -->
+        <TextBlock Text="Options d'exportation" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0"/>
+
+        <!-- Sélection de commune -->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0">
+            <TextBlock Text="Sélectionner la commune :" FontWeight="Bold" Margin="0,0,0,5"/>
+            <ComboBox x:Name="comboCommune" Width="200" Margin="0,0,0,15">
+                
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Sélection de dates -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,140,0,0">
+            <TextBlock Text="Date début:" VerticalAlignment="Center"/>
+            <DatePicker x:Name="datePickerStart" Width="120"/>
+            <TextBlock Text="Date fin:" VerticalAlignment="Center"/>
+            <DatePicker x:Name="datePickerEnd" Width="120"/>
+        </StackPanel>
+
+        <!-- Boutons d'exportation en PDF ou Excel -->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,220,0,0" >
+            <Button Content="Exporter en PDF" Width="200" Height="40" Background="#1E90FF" Foreground="White" FontWeight="Bold" Click="ExportToPDF_Click"/>
+            <Button Content="Exporter en Excel" Width="200" Height="40" Background="#1E90FF" Foreground="White" FontWeight="Bold" Click="ExportToExcel_Click"/>
+        </StackPanel>
+
+        <!-- Bouton Annuler -->
+        <Button Content="Annuler" Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20"/>
+    </Grid>
+
+</Window>

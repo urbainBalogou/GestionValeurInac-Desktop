@@ -13,6 +13,12 @@
     <Compile Update="Forms\AdminInterface.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Forms\StockageView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PrintForms\SortiePrint.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddForms\ajout_commune.xaml">
@@ -66,6 +72,9 @@
     <Page Update="Forms\SortiesForm.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Forms\StockageView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Forms\TypeValeurForm.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -73,6 +82,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PrintForms\SortiePrint.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UpdateForms\update_demande.xaml">

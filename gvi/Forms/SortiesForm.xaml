@@ -8,24 +8,36 @@
         Title="Sortie" MinHeight="500" Width="1103" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <DockPanel LastChildFill="False">
+        <!-- Menu de navigation sur la gauche -->
         <StackPanel DockPanel.Dock="Left" Width="137" Background="#FF1288F0">
             <Label x:Name="type_val" Content="Type valeur" Foreground="White" Height="35" FontWeight="Bold" FontSize="14" MouseLeftButtonDown="type_val_MouseLeftButtonDown"/>
             <Label x:Name="txtvaleur" Content="Valeur Inactive" Foreground="White" Height="35" FontWeight="Bold" FontSize="14" MouseLeftButtonDown="txtvaleur_MouseLeftButtonDown"/>
             <Label x:Name="txtcommune" Content="Commune" Foreground="White" Height="35" FontWeight="Bold" FontSize="14" MouseLeftButtonDown="txtcommune_MouseLeftButtonDown"/>
             <Label x:Name="txtdemandes" Content="Demandes" Foreground="White" Height="35" FontWeight="Bold" FontSize="14" MouseLeftButtonDown="txtdemandes_MouseLeftButtonDown"/>
-
             <Label x:Name="txtentree" Content="Entrées" Height="35" Foreground="White" FontWeight="Bold" FontSize="14" FontStyle="Normal" MouseLeftButtonDown="txtentree_MouseLeftButtonDown"/>
             <Label x:Name="employe" Content="Employés" Height="35" Foreground="White" FontWeight="Bold" FontSize="14" FontStyle="Normal" MouseLeftButtonDown="employe_MouseLeftButtonDown"/>
             <Label x:Name="txtfonc" Content="Fonctions" Height="35" Foreground="White" FontWeight="Bold" FontSize="14" FontStyle="Normal" MouseLeftButtonDown="txtfonc_MouseLeftButtonDown"/>
         </StackPanel>
 
-        <Canvas Width="662">
-            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
-            <Button Margin="250,30,20,0" Content="Rafraichir" Click="Button_Click"></Button>
+        <!-- Contenu principal -->
+        <Canvas Width="850">
+            <!-- Zone de recherche -->
+            <TextBox x:Name="rechercher" Height="29" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="10" Width="220" TextChanged="rechercher_TextChanged"/>
+            <Button x:Name="btnrefresh" Content="Rafraichir" Canvas.Left="250" Canvas.Top="10" Click="Button_Click" Height="29" Width="80"/>
             <Button x:Name="btnsort" Content="Ajouter une nouvelle sortie" Canvas.Left="450" Width="220" FontStyle="Italic" Background="{x:Null}" BorderThickness="1,1,1,1" FontWeight="UltraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnsort_Click"/>
 
-            <!-- ListView with GridView -->
-            <ListView x:Name="listViewSorties" Canvas.Top="50" Canvas.Left="10" Height="434" Width="872" VerticalAlignment="Center" HorizontalAlignment="Left" MouseDoubleClick="listViewDemandes_MouseDoubleClick">
+            <!-- Zone de filtrage par date -->
+            <Label Content="Date début:" Canvas.Left="10" Canvas.Top="45" FontWeight="Bold"/>
+            <DatePicker x:Name="datePickerStart" Canvas.Left="80" Canvas.Top="45" Width="150"/>
+            <Label Content="Date fin:" Canvas.Left="250" Canvas.Top="45" FontWeight="Bold"/>
+            <DatePicker x:Name="datePickerEnd" Canvas.Left="320" Canvas.Top="45" Width="150"/>
+            <Button Content="Filtrer" Canvas.Left="480" Canvas.Top="45" Width="80"/>
+
+            <!-- Bouton Imprimer -->
+            <Button x:Name="btnPrint" Content="Imprimer" Canvas.Left="570" Canvas.Top="45" Width="80" Click="btnPrint_Click"/>
+
+            <!-- ListView pour afficher les sorties -->
+            <ListView x:Name="listViewSorties" Canvas.Top="85" Canvas.Left="10" Height="400" Width="872" VerticalAlignment="Center" HorizontalAlignment="Left" MouseDoubleClick="listViewSorties_MouseDoubleClick">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Commune" DisplayMemberBinding="{Binding Commune}" Width="150"/>
@@ -36,8 +48,6 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-
         </Canvas>
     </DockPanel>
-
 </Window>

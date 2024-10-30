@@ -21,7 +21,7 @@
 
         </StackPanel>
         <Canvas Width="662">
-            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
+            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap"  Canvas.Top="10" Width="220" TextChanged="rechercher_TextChanged"/>
             <Button Margin="250,30,20,0" Content="Rafraichir" Click="Button_Click"></Button>
             <Button x:Name="btntype" Content="Ajouter un type de valeur"  Canvas.Left="450" Width="220" FontStyle="Italic" Background="{x:Null}" BorderThickness="1,1,1,1" FontWeight="UltraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btntype_Click"/>
 

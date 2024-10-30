@@ -250,6 +250,11 @@ namespace gvi
                     return null;
                 }
             }
+            var demande = _context.Demandes.Find(demandeId);
+            if (demande != null)
+            {
+                demande.EstSortie = true;
+            }
 
             _context.Sorties.Add(sortie);
             _context.SaveChanges();
@@ -271,6 +276,7 @@ namespace gvi
                         stockageExistant.QuantiteDisponible += valeur.Quantite;
                     }
                 }
+                _sortie.Demande.EstSortie = false;
 
                 _context.Sorties.Remove(_sortie);
                 _context.SaveChanges();

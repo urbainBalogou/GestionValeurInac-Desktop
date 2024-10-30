@@ -24,6 +24,7 @@ namespace gvi.Models
         [ForeignKey("ValeurId")]
         [Required]
         public Valeur Valeur { get; set; }
+        
 
         public int QuantiteDisponible { get; set; }
     }

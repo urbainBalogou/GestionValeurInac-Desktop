@@ -58,7 +58,7 @@
             </Canvas.RenderTransform>
 
             <!-- Barre de recherche et boutons -->
-            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
+            <TextBox x:Name="rechercher" Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220" TextChanged="rechercher_TextChanged"/>
             <Button Margin="250,30,20,0" Content="Rafraichir" Click="Button_Click"></Button>
             <Button x:Name="btnajout" Content="Ajouter une nouvelle commune" Canvas.Left="450" Width="220" FontStyle="Italic" Background="{x:Null}" FontWeight="UltraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnajout_Click"/>
 

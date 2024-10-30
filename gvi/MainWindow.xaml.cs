@@ -121,6 +121,13 @@ namespace gvi
             log.Show();
           
         }
+
+        private void btnstockage_Click(object sender, RoutedEventArgs e)
+        {
+            StockageView log = new StockageView();
+          
+            log.Show();
+        }
     }
 
 }

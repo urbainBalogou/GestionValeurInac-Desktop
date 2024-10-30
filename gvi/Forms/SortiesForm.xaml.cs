@@ -1,5 +1,6 @@
 ﻿using gvi.Data;
 using gvi.Models;
+using gvi.PrintForms;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -87,7 +88,7 @@ namespace gvi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            LoadSorties();
         }
         private void LoadSorties()
         {
@@ -113,7 +114,65 @@ namespace gvi
             listViewSorties.ItemsSource = groupedSorties;
         }
 
-        private void listViewDemandes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+       
+
+        private void FilterEntrees(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                // Si la recherche est vide, afficher toutes les communes
+                LoadSorties();
+            }
+            else
+            {
+                // Filtrer les communes dont le nom contient le texte recherché
+                var FilterSorties = _context.Sorties
+                .Include(d => d.Commune) // Inclure la commune
+                .Include(d => d.Employe).Include(d => d.Valeurs) // Inclure les valeurs associées
+                .ThenInclude(dv => dv.Valeur) // Inclure les détails de la valeur inactive
+                .ThenInclude(v => v.TypeValeur) // Inclure les détails du type de valeur
+                .AsEnumerable() // Convertir en IEnumerable pour utiliser LINQ en mémoire
+                .Select(s => new
+                {
+                    Sortie = s,
+                    Commune = s.Commune?.Nom ?? "Non spécifiée", // Gérer le cas où Commune est null
+                    Employe = s.Employe?.Nom ?? "Non Inexistant",
+                    Valeurs = string.Join(", ", s.Valeurs
+                        .Select(v => v.Valeur?.TypeValeur?.Nature ?? "Valeur non spécifiée")), // Gérer les nullités
+                    Quantites = string.Join(", ", s.Valeurs
+                        .Select(v => v.Quantite.ToString())), // Assurez-vous que Quantite est un entier
+                    DateSortie = s.DateSortie
+                })
+                .ToList().Where(d => d.Commune.ToLower().Contains(searchText.ToLower()) || d.Valeurs.ToLower().Contains(searchText.ToLower()));
+                listViewSorties.ItemsSource = FilterSorties;
+            }
+        }
+        private System.Threading.Timer _searchTimer;
+        private void rechercher_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                // Annuler le timer précédent s'il existe
+                _searchTimer?.Dispose();
+
+                // Créer un nouveau timer qui se déclenchera après 300ms
+                _searchTimer = new System.Threading.Timer(_ =>
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        FilterEntrees(textBox.Text);
+                    });
+                }, null, 300, System.Threading.Timeout.Infinite);
+            }
+        }
+
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+             SortiePrint sortiePrint = new SortiePrint();
+            sortiePrint.ShowDialog();
+        }
+
+        private void listViewSorties_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var selectedItem = listViewSorties.SelectedItem;
 

@@ -1,0 +1,36 @@
+﻿<Window x:Class="gvi.Forms.StockageView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gvi.Forms"
+        mc:Ignorable="d"
+        Title="StockageView" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- En-tête de la page -->
+        <TextBlock Text="Commune Valeurs" FontSize="22" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Foreground="#1E90FF" Margin="0,0,0,20"/>
+        <Label Content="rechercher" Grid.Row="1"></Label>
+        <TextBox x:Name="rechercher" Margin="101,34,370,301" Grid.RowSpan="2" TextChanged="rechercher_TextChanged" />
+
+        <!-- Liste des utilisateurs -->
+        <DataGrid x:Name="StockListGrid"  Grid.Row="1" AutoGenerateColumns="False" HeadersVisibility="Column" 
+                  Background="White" BorderBrush="#1E90FF" BorderThickness="1" RowBackground="White" 
+                  AlternatingRowBackground="#E6F1FF" Margin="10,44,-10,5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Commune" Binding="{Binding Commune}" Width="250" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Valeurs" Binding="{Binding ValeurNom}" Width="150" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Quantité Disponible" Binding="{Binding Quantite}" Width="150" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Bouton Ajouter un Utilisateur -->
+
+    </Grid>
+</Window>

@@ -23,7 +23,7 @@ namespace gvi
     {
         private DataContext _context;
         private Entree _entree;
-
+  
         public EntréesForm()
         {
             InitializeComponent();
@@ -135,7 +135,51 @@ namespace gvi
                 LoadEntree(); // Recharger la liste après modifications éventuelles
             }
         }
+        private void FilterEntrees(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                // Si la recherche est vide, afficher toutes les communes
+                LoadEntree();
+            }
+            else
+            {
+                // Filtrer les communes dont le nom contient le texte recherché
+                var filteredEntrees = _context.Entrees
+    .Include(e => e.Commune) // Inclure la commune
+    .Include(e => e.Valeurs) // Inclure les valeurs associées
+    .ThenInclude(ev => ev.Valeur) // Inclure les détails de la valeur inactive
+    .AsEnumerable() // Convertir en IEnumerable pour utiliser LINQ en mémoire
+    .Select(e => new
+    {
+        Entree = e, // Ajouter l'objet `Entree` ici
+        Commune = e.Commune.Nom,
+        Valeurs = string.Join(", ", e.Valeurs.Select(v => v.Valeur.TypeValeur.Nature)),
+        Quantites = string.Join(", ", e.Valeurs.Select(v => v.Quantite)),
+        DateEntree = e.DateEntree
+    })
+    .ToList().Where(d => d.Commune.ToLower().Contains(searchText.ToLower()) || d.Valeurs.ToLower().Contains(searchText.ToLower()));
+                listViewEntrees.ItemsSource = filteredEntrees;
+            }
+        }
+        private System.Threading.Timer _searchTimer;
+        private void rechercher_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                // Annuler le timer précédent s'il existe
+                _searchTimer?.Dispose();
 
+                // Créer un nouveau timer qui se déclenchera après 300ms
+                _searchTimer = new System.Threading.Timer(_ =>
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        FilterEntrees(textBox.Text);
+                    });
+                }, null, 300, System.Threading.Timeout.Infinite);
+            }
+        }
     }
 
 }

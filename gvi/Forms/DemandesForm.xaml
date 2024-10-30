@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gvi"
         mc:Ignorable="d"
-        Title="Demande" Height="500" Width="1023" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Demande" Height="500" Width="1130" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <!-- Définition des styles -->
     <Window.Resources>
@@ -46,15 +46,23 @@
             <Label x:Name="txtfonc" Content="Fonctions" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="txtfonc_MouseLeftButtonDown"/>
         </StackPanel>
 
-        <!-- Contenu principal -->
         <Canvas Width="762">
             <!-- Zone de recherche -->
-            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
-            <Button x:Name="btnfresh" Content="Rafraichir" Click="btnfresh_Click" Height="29" Canvas.Left="250" Canvas.Top="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="rechercher" Height="29" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="10" Width="150" TextChanged="rechercher_TextChanged" />
+
+            <!-- Sélecteurs de dates pour le filtrage -->
+            <TextBlock Text="Date de début :" Canvas.Left="170" Canvas.Top="15" />
+            <DatePicker x:Name="datePickerStart" Canvas.Left="260" Canvas.Top="10" Width="130"/>
+            <TextBlock Text="Date de fin :" Canvas.Left="400" Canvas.Top="15" />
+            <DatePicker x:Name="datePickerEnd" Canvas.Left="480" Canvas.Top="10" Width="130"/>
+
+            <!-- Bouton pour appliquer le filtre de dates -->
+            <Button x:Name="btnFiltrerDates" Content="Filtrer" Click="btnFiltrerDates_Click" Height="29" Canvas.Left="630" Canvas.Top="10"/>
+
             <!-- Bouton pour ajouter une nouvelle demande -->
-            <Button Name="ajd" Content="Ajouter une nouvelle demande" Canvas.Left="450" Width="220" 
-                    FontStyle="Italic" Background="{x:Null}" FontWeight="UltraBold" 
-                    HorizontalAlignment="Center" VerticalAlignment="Center" Click="ajd_Click"/>
+            <Button Name="ajd" Content="Ajouter une nouvelle demande" Canvas.Left="750" Width="220" 
+            FontStyle="Italic" Background="{x:Null}" FontWeight="UltraBold" 
+            HorizontalAlignment="Center" VerticalAlignment="Center" Click="ajd_Click"/>
 
             <!-- Liste des demandes avec ListView -->
             <ListView x:Name="listViewDemandes" Canvas.Top="50" Canvas.Left="10" Height="434" Width="872" VerticalAlignment="Center" HorizontalAlignment="Left" MouseDoubleClick="listViewDemandes_MouseDoubleClick">

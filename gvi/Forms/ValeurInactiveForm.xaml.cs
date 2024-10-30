@@ -116,5 +116,35 @@ namespace gvi
         {
             LoadValeur();
         }
+        void FilterValeur(string searchText)
+        {
+            if (string.IsNullOrEmpty(searchText)) LoadValeur();
+            else
+            {
+                var filteredTypes = _context.Valeurs
+                    .ToList()
+                    .Where(c => c.TypeValeur.Nature.ToLower().Contains(searchText.ToLower()));
+                listViewValeurs.ItemsSource = filteredTypes;
+            }
+        }
+
+        private System.Threading.Timer _searchTimer;
+        private void rechercher_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                // Annuler le timer précédent s'il existe
+                _searchTimer?.Dispose();
+
+                // Créer un nouveau timer qui se déclenchera après 300ms
+                _searchTimer = new System.Threading.Timer(_ =>
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                         FilterValeur(textBox.Text);
+                    });
+                }, null, 300, System.Threading.Timeout.Infinite);
+            }
+        }
     }
 }

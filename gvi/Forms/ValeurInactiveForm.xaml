@@ -20,7 +20,7 @@
 
         </StackPanel>
         <Canvas Width="662">
-            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
+            <TextBox x:Name="rechercher" Height="29" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="10" Width="220" TextChanged="rechercher_TextChanged"/>
             <Button Margin="250,30,20,0" Content="Rafraichir" Click="Button_Click"></Button>
             <Button x:Name="btnvi" Content="Ajouter une nouvelle valeur"  Canvas.Left="450" Width="220" FontStyle="Italic" Background="{x:Null}" BorderThickness="1,1,1,1" FontWeight="UltraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnvi_Click"/>
             <ListView x:Name="listViewValeurs" Canvas.Top="44" Canvas.Left="10" Width="763" Height="434" HorizontalAlignment="Left" VerticalAlignment="Center" MouseDoubleClick="listViewValeurs_MouseDoubleClick_1">

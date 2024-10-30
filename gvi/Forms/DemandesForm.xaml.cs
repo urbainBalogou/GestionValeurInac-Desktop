@@ -138,5 +138,84 @@ namespace gvi
                 LoadDemandes(); // Recharger la liste après modifications éventuelles
             }
         }
+        private void FilterDemandes(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                // Si la recherche est vide, afficher toutes les communes
+                LoadDemandes();
+            }
+            else
+            {
+                // Filtrer les communes dont le nom contient le texte recherché
+                var filteredDemandes = _context.Demandes
+                   .Include(d => d.Commune) // Inclure la commune
+                   .Include(d => d.Valeurs) // Inclure les valeurs associées
+                   .ThenInclude(dv => dv.Valeur) // Inclure les détails de la valeur inactive
+                   .ThenInclude(v => v.TypeValeur) // Inclure les détails du type de valeur
+                   .AsEnumerable() // Convertir en IEnumerable pour utiliser LINQ en mémoire
+                   .Select(d => new
+                   {
+                       Demande = d,
+                       Commune = d.Commune?.Nom ?? "Non spécifiée", // Gérer le cas où Commune est null
+                       Valeurs = string.Join(", ", d.Valeurs
+                           .Select(v => v.Valeur?.TypeValeur?.Nature ?? "Valeur non spécifiée")), // Gérer les nullités
+                       Quantites = string.Join(", ", d.Valeurs
+                           .Select(v => v.Quantite.ToString())), // Assurez-vous que Quantite est un entier
+                       DateDemande = d.DateDemande
+                   })
+                   .ToList().Where(d => d.Commune.ToLower().Contains( searchText.ToLower()) || d.Valeurs.ToLower() .Contains( searchText.ToLower()));
+                listViewDemandes.ItemsSource = filteredDemandes;
+            }
+        }
+        private System.Threading.Timer _searchTimer;
+        private void rechercher_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox)
+            {
+                // Annuler le timer précédent s'il existe
+                _searchTimer?.Dispose();
+
+                // Créer un nouveau timer qui se déclenchera après 300ms
+                _searchTimer = new System.Threading.Timer(_ =>
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                         FilterDemandes(textBox.Text);
+                    });
+                }, null, 300, System.Threading.Timeout.Infinite);
+            }
+        }
+        private void btnFiltrerDates_Click(object sender, RoutedEventArgs e)
+        {
+            FilterByDates();
+        }
+
+        private void FilterByDates()
+        {
+            var startDate = datePickerStart.SelectedDate;
+            var endDate = datePickerEnd.SelectedDate;
+
+            var filteredDemandes = _context.Demandes
+                .Include(d => d.Commune)
+                .Include(d => d.Valeurs)
+                .ThenInclude(dv => dv.Valeur) // Inclure les détails de la valeur inactive
+                   .ThenInclude(v => v.TypeValeur) // Inclure les détails du type de valeur
+                   .AsEnumerable() // Convertir en IEnumerable pour utiliser LINQ en mémoire
+                .Where(d => (!startDate.HasValue || d.DateDemande >= startDate.Value) &&
+                            (!endDate.HasValue || d.DateDemande <= endDate.Value))
+                .Select(d => new
+                {
+                    Commune = d.Commune?.Nom ?? "Non spécifiée",
+                    Valeurs = string.Join(", ", d.Valeurs.Select(v => v.Valeur?.TypeValeur?.Nature ?? "Non spécifiée")),
+                    Quantites = string.Join(", ", d.Valeurs.Select(v => v.Quantite.ToString())),
+                    DateDemande = d.DateDemande.ToString("dd/MM/yyyy")
+                })
+                .ToList();
+
+            listViewDemandes.ItemsSource = filteredDemandes;
+        }
     }
 }
+
+        

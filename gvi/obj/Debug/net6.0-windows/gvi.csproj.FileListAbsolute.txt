@@ -96,3 +96,7 @@ C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\refint\gvi.dll
 C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\gvi.pdb
 C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\gvi.genruntimeconfig.cache
 C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\ref\gvi.dll
+C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\Forms\StockageView.g.cs
+C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\Forms\StockageView.baml
+C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\PrintForms\SortiePrint.baml
+C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\PrintForms\SortiePrint.g.cs

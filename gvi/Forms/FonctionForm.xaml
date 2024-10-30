@@ -21,7 +21,7 @@
 
         </StackPanel>
         <Canvas Width="662">
-            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
+            <TextBox x:Name="rechercher"  Height="29" Canvas.Left="10" TextWrapping="Wrap"  Canvas.Top="10" Width="220" TextChanged="rechercher_TextChanged"/>
             <Button Margin="250,30,20,0" Content="Rafraichir" Click="Button_Click"></Button>
             <Button x:Name="ajf" Content="Ajouter une nouvelle fonction"  Canvas.Left="450" Width="220" FontStyle="Italic" Background="{x:Null}" BorderThickness="1,1,1,1" FontWeight="UltraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ajf_Click"/>
             <ListView x:Name="listViewFonctions" Width="770"  HorizontalAlignment="Center" Height="423" Canvas.Top="58" VerticalAlignment="Top" MouseDoubleClick="listViewFonctions_MouseDoubleClick">

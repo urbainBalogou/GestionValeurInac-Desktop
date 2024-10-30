@@ -20,7 +20,7 @@
         </StackPanel>
 
         <Canvas Width="762">
-            <TextBox Height="29" Canvas.Left="10" TextWrapping="Wrap" Text="Rechercher" Canvas.Top="10" Width="220"/>
+            <TextBox x:Name="rechercher" Height="29" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="10" Width="220" TextChanged="rechercher_TextChanged"/>
             <Button x:Name="btnfresh" Content="Rafraichir" Click="btnfresh_Click" Height="29" Canvas.Left="250" Canvas.Top="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <Button x:Name="aje" Content="Ajouter une nouvelle entrée" Canvas.Left="450" Width="220" FontStyle="Italic" Background="{x:Null}" BorderThickness="1,1,1,1" FontWeight="UltraBold" HorizontalAlignment="Center" VerticalAlignment="Center" Click="aje_Click"/>
 
