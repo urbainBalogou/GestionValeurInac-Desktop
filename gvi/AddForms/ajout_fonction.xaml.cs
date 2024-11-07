@@ -131,7 +131,8 @@ namespace gvi.AddForms
                 }
                 else
                 {
-                    MessageBox.Show("Aucune fonction trouvée avec ce code", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //MessageBox.Show("Aucune fonction trouvée avec ce code", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);(
+                    textBoxInit();
                 }
             }
 

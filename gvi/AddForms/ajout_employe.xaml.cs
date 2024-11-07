@@ -168,6 +168,10 @@ namespace gvi
             {
                 SupprimerEmploye();
             }
+            else
+            {
+                ClearFields();
+            }
         }
 
         private void SupprimerEmploye()

@@ -32,6 +32,8 @@ namespace gvi
         public ajout_entree(DataContext context, Entree entree)
         {
             InitializeComponent();
+            libdate.Visibility = Visibility.Hidden;
+            datepic.Visibility = Visibility.Hidden;
             _context = context;
 
             ValeursSelectionnees = new ObservableCollection<EntreeValeur>();
@@ -48,6 +50,8 @@ namespace gvi
         }
         private void RemplirChamp()
         {
+            libdate.Visibility = Visibility.Visible;
+            datepic.Visibility = Visibility.Visible;
             ComboBoxCommune.SelectedValue = _entree.CommuneId;
             datepic.SelectedDate = _entree.DateEntree;
 
@@ -97,6 +101,13 @@ namespace gvi
                     MessageBox.Show("Cette valeur est déjà dans la liste des valeurs sélectionnées.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
+        }
+
+        void initialisation()
+        {
+            ComboBoxCommune.SelectedIndex = -1;
+            ValeursSelectionnees.Clear();
+            datepic.
         }
 
       

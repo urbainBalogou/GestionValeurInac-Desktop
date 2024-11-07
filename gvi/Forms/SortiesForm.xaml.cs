@@ -178,7 +178,7 @@ namespace gvi
 
             if (selectedItem != null)
             {
-                var sortie = ((dynamic)selectedItem).Sortie; // Récupérer l'objet Entree
+                var sortie = ((dynamic)selectedItem).Sortie; // Récupérer l'objet Sortie
                 ajout_sorties ajout = new ajout_sorties(_context, sortie);
                 ajout.ShowDialog();
                 LoadSorties(); // Recharger la liste après modifications éventuelles

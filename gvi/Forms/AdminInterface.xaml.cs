@@ -40,5 +40,31 @@ namespace gvi.Forms
             var signup = new signup();
             signup.Show();
         }
+        void delUser(Utilisateur user)
+        {
+            _context.Utilisateurs.Remove(user);
+            _context.SaveChanges();
+        }
+
+        private void UserListGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+        {
+            var selectedUser = (Utilisateur)UserListGrid.SelectedItem;
+            var result = MessageBox.Show("Confirmer la suppression", "SUPPRESSION", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                delUser(selectedUser);
+                MessageBox.Show("L'utilisateur a été supprimé avec succès.");
+                LoadUser();
+            }
+           
+           
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LoadUser();
+        }
     }
 }

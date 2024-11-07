@@ -15,7 +15,7 @@ namespace gvi
     {
         private readonly DataContext _context;
         private Sortie _sortie;
-        private bool champEstRempli = false;
+        private bool champEstRempli;
         public ObservableCollection<SortieValeur> ValeursSelectionnees { get; set; }
         public ObservableCollection<Employe> EmployesFiltered { get; set; }
         public ObservableCollection<Demande> DemandesFiltered { get; set; }
@@ -23,8 +23,12 @@ namespace gvi
         public ajout_sorties(DataContext context, Sortie sortie)
         {
             InitializeComponent();
+            libdate.Visibility = Visibility.Hidden;
+            champEstRempli = false;
+            DateSortiePicker.Visibility = Visibility.Hidden;
             _context = context;
             _sortie = sortie;
+           
 
             ValeursSelectionnees = new ObservableCollection<SortieValeur>();
             EmployesFiltered = new ObservableCollection<Employe>();
@@ -43,6 +47,9 @@ namespace gvi
 
         private void RemplirChamp()
         {
+            btnEnregistrer.Visibility = Visibility.Hidden;
+            libdate.Visibility = Visibility.Visible;
+            DateSortiePicker.Visibility=Visibility.Visible;
             ComboBoxCommune.SelectedValue = _sortie.CommuneId;
             ComboBoxEmploye.SelectedValue = _sortie.EmployeId;
             ComboBoxDemandes.SelectedValue = _sortie.DemandeId;
@@ -127,24 +134,25 @@ namespace gvi
 
         private void ValeursSelectionneesGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            if (e.EditAction == DataGridEditAction.Commit && e.Column.Header.ToString() == "Quantité")
-            {
-                var sortieValeur = e.Row.Item as SortieValeur;
-                if (sortieValeur != null)
-                {
-                    var editedTextBox = e.EditingElement as TextBox;
-                    if (int.TryParse(editedTextBox.Text, out int newQuantite))
-                    {
-                        sortieValeur.Quantite = newQuantite;
-                        sortieValeur.MontantTotal = sortieValeur.CalculateMontantTotal();
-                    }
-                }
-            }
+            //if (e.EditAction == DataGridEditAction.Commit && e.Column.Header.ToString() == "Quantité")
+            //{
+            //    var sortieValeur = e.Row.Item as SortieValeur;
+            //    if (sortieValeur != null)
+            //    {
+            //        var editedTextBox = e.EditingElement as TextBox;
+            //        if (int.TryParse(editedTextBox.Text, out int newQuantite))
+            //        {
+            //            sortieValeur.Quantite = newQuantite;
+            //            sortieValeur.MontantTotal = sortieValeur.CalculateMontantTotal();
+            //        }
+            //    }
+            //}
         }
 
         private void Modification()
         {
             if (!ValidateInputs()) return;
+            
             
             _sortie.CommuneId = (int)ComboBoxCommune.SelectedValue;
             _sortie.EmployeId = (int)ComboBoxEmploye.SelectedValue;
@@ -208,7 +216,7 @@ namespace gvi
             if (champEstRempli == false)
             {
                 var valeurs = ValeursSelectionnees
-                    .Select(v => (v.ValeurId, v.Quantite))
+                    .Select(v => (v.ValeurId, v.Quantite, v.MontantTotal))
                     .ToList();
                 CreerSortie((int)ComboBoxCommune.SelectedValue, (int)ComboBoxEmploye.SelectedValue, (int)ComboBoxDemandes.SelectedValue, valeurs);
             }
@@ -218,7 +226,7 @@ namespace gvi
 
         }
 
-        public Sortie CreerSortie(int communeId, int employeId, int demandeId, List<(int valeurId, int quantite)> valeurs)
+        public Sortie CreerSortie(int communeId, int employeId, int demandeId, List<(int valeurId, int quantite, int montant)> valeurs)
         {
             var sortie = new Sortie
             {
@@ -229,7 +237,7 @@ namespace gvi
                 Valeurs = new List<SortieValeur>()
             };
 
-            foreach (var (valeurId, quantite) in valeurs)
+            foreach (var (valeurId, quantite, MontantTotal) in valeurs)
             {
                 var stockageExistant = _context.Stockages
                     .FirstOrDefault(s => s.CommuneId == communeId && s.ValeurId == valeurId);
@@ -241,7 +249,9 @@ namespace gvi
                     sortie.Valeurs.Add(new SortieValeur
                     {
                         ValeurId = valeurId,
-                        Quantite = quantite
+                        Quantite = quantite,
+                        MontantTotal = MontantTotal
+                         
                     });
                 }
                 else

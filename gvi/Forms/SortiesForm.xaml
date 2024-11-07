@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gvi"
         mc:Ignorable="d"
+        Icon="/Authentification/Armoiries-du-Togo.png"
         Title="Sortie" MinHeight="500" Width="1103" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <DockPanel LastChildFill="False">

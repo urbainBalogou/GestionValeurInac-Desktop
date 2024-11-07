@@ -35,7 +35,7 @@ namespace gvi.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Remplace "URBAI" et "gvi_database" par tes informations
+            // Remplace "URBAI" et "gvi_database" sont les informations de la base de données et du serveur 
             optionsBuilder.UseSqlServer("Server=URBAIN;Database=gvi_database;Trusted_Connection=True;");
         }
 
@@ -52,23 +52,27 @@ namespace gvi.Data
                 .HasForeignKey(e => e.FonctionId);
 
             modelBuilder.Entity<Valeur>()
-    .HasOne(v => v.TypeValeur)           // Relation un-à-plusieurs entre Valeur et TypeValeur
-    .WithMany(t => t.Valeurs)             // Un TypeValeur peut avoir plusieurs Valeurs
-    .HasForeignKey(v => v.typeValeurId);
+                .HasOne(v => v.TypeValeur)           // Relation un-à-plusieurs entre Valeur et TypeValeur
+                .WithMany(t => t.Valeurs)             // Un TypeValeur peut avoir plusieurs Valeurs
+                .HasForeignKey(v => v.typeValeurId);
 
             modelBuilder.Entity<Stockage>()
             .HasIndex(s => new { s.CommuneId, s.ValeurId })
             .IsUnique();
+
+
             modelBuilder.Entity<Sortie>()
-       .HasOne(s => s.Demande)
-       .WithMany()
-       .HasForeignKey(s => s.DemandeId)
-       .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(s => s.Demande)
+                .WithMany()
+                .HasForeignKey(s => s.DemandeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
             modelBuilder.Entity<Sortie>()
-       .HasOne(s => s.Employe)
-       .WithMany()
-       .HasForeignKey(s => s.EmployeId)
-       .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(s => s.Employe)
+                .WithMany()
+                .HasForeignKey(s => s.EmployeId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
 

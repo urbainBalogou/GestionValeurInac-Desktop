@@ -21,6 +21,8 @@ namespace gvi
         public ajout_demande(DataContext context, Demande demande)
         {
             InitializeComponent();
+            libdate.Visibility = Visibility.Hidden;
+            datepic.Visibility = Visibility.Hidden;
             _context = context;
             enCours.IsChecked = true;
             
@@ -47,6 +49,8 @@ namespace gvi
 
         private void RemplirChamp()
         {
+            libdate.Visibility = Visibility.Visible;
+            datepic.Visibility = Visibility.Visible;
             ComboBoxCommune.SelectedValue = _demande.CommuneId;
             datepic.SelectedDate = _demande.DateDemande;
 
@@ -223,8 +227,15 @@ namespace gvi
             }
             else
             {
-                MessageBox.Show("Aucune demande à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                //MessageBox.Show("Aucune demande à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                initialisation();
             }
+        }
+
+        void initialisation()
+        {
+            ComboBoxCommune.SelectedIndex = -1;
+            ValeursSelectionnees.Clear();
         }
 
         private void ComboBoxCommune_SelectionChanged(object sender, SelectionChangedEventArgs e)

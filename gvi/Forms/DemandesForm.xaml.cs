@@ -108,9 +108,13 @@ namespace gvi
                         .Select(v => v.Valeur?.TypeValeur?.Nature ?? "Valeur non spécifiée")), // Gérer les nullités
                     Quantites = string.Join(", ", d.Valeurs
                         .Select(v => v.Quantite.ToString())), // Assurez-vous que Quantite est un entier
-                    DateDemande = d.DateDemande
+                    DateDemande = d.DateDemande,
+                    EstSortie = d.EstSortie ? "Oui": "Non"
+
+
                 })
                 .ToList();
+          
 
             listViewDemandes.ItemsSource = groupedDemandes;
         }
@@ -162,9 +166,10 @@ namespace gvi
                            .Select(v => v.Valeur?.TypeValeur?.Nature ?? "Valeur non spécifiée")), // Gérer les nullités
                        Quantites = string.Join(", ", d.Valeurs
                            .Select(v => v.Quantite.ToString())), // Assurez-vous que Quantite est un entier
-                       DateDemande = d.DateDemande
+                       DateDemande = d.DateDemande,
+                       EstSortie = d.EstSortie?"Oui": "Non"
                    })
-                   .ToList().Where(d => d.Commune.ToLower().Contains( searchText.ToLower()) || d.Valeurs.ToLower() .Contains( searchText.ToLower()));
+                   .ToList().Where(d => d.Commune.ToLower().Contains( searchText.ToLower()) || d.Valeurs.ToLower() .Contains( searchText.ToLower()) || d.EstSortie.ToLower().Contains(searchText.ToLower()));
                 listViewDemandes.ItemsSource = filteredDemandes;
             }
         }
@@ -214,6 +219,11 @@ namespace gvi
                 .ToList();
 
             listViewDemandes.ItemsSource = filteredDemandes;
+        }
+
+        private void btnrafraichir_Click(object sender, RoutedEventArgs e)
+        {
+            LoadDemandes();
         }
     }
 }

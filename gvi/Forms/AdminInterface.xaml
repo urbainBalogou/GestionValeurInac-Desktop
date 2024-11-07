@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gvi.Forms"
         mc:Ignorable="d"
-        Title="Interface d'Administration" Height="450" Width="614" Background="#F0F4FA">
+        Title="Interface d'Administration" Height="450" Width="614" Background="#F0F4FA" Icon="/Authentification/Armoiries-du-Togo.png">
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
@@ -17,11 +17,13 @@
         <!-- En-tête de la page -->
         <TextBlock Text="Gestion des Utilisateurs" FontSize="22" FontWeight="Bold" 
                    HorizontalAlignment="Center" Foreground="#1E90FF" Margin="0,0,0,20"/>
+        <Button Content="Actualiser
+" Margin="37,15,450,0" BorderThickness="3,5,3,9" Click="Button_Click"/>
 
         <!-- Liste des utilisateurs -->
         <DataGrid x:Name="UserListGrid" Grid.Row="1" AutoGenerateColumns="False" HeadersVisibility="Column" 
                   Background="White" BorderBrush="#1E90FF" BorderThickness="1" RowBackground="White" 
-                  AlternatingRowBackground="#E6F1FF" Margin="10,5,-10,5">
+                  AlternatingRowBackground="#E6F1FF" Margin="10,5,-10,5" MouseDoubleClick="UserListGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Username}" Width="250" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Rôle" Binding="{Binding Role}" Width="150" IsReadOnly="True"/>

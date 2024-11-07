@@ -67,5 +67,16 @@ namespace gvi.Authentification
         {
             Application.Current.Shutdown();
         }
+
+        private void txtanuuler_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            initialisation();
+        }
+        void initialisation()
+        {
+            UsernameTextBox.Text = null;
+            PasswordTextBox.Password = null;
+            RoleComboBox.SelectedIndex = -1;
+        }
     }
 }

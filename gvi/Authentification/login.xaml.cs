@@ -49,5 +49,20 @@ namespace gvi.Authentification
                 MessageBox.Show("Nom d'utilisateur ou mot de passe incorrect.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void Label_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void txtannuler_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            init();
+        }
+        void init()
+        {
+            UsernameTextBox.Text = null;
+            PasswordTextBox.Password = null;
+        }
     }
 }

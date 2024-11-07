@@ -100,3 +100,13 @@ C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\Forms\StockageView.
 C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\Forms\StockageView.baml
 C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\PrintForms\SortiePrint.baml
 C:\Users\urbai\source\repos\gvi\gvi\obj\Debug\net6.0-windows\PrintForms\SortiePrint.g.cs
+C:\Users\urbai\source\repos\gvi\gvi\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\urbai\source\repos\gvi\gvi\bin\Debug\net6.0-windows\ClosedXML.dll
+C:\Users\urbai\source\repos\gvi\gvi\bin\Debug\net6.0-windows\ClosedXML.Parser.dll
+C:\Users\urbai\source\repos\gvi\gvi\bin\Debug\net6.0-windows\DocumentFormat.OpenXml.dll
+C:\Users\urbai\source\repos\gvi\gvi\bin\Debug\net6.0-windows\DocumentFormat.OpenXml.Framework.dll
+C:\Users\urbai\source\repos\gvi\gvi\bin\Debug\net6.0-windows\ExcelNumberFormat.dll
+C:\Users\urbai\source\repos\gvi\gvi\bin\Debug\net6.0-windows\itextsharp.dll
+C:\Users\urbai\source\repos\gvi\gvi\bin\Debug\net6.0-windows\RBush.dll
+C:\Users\urbai\source\repos\gvi\gvi\bin\Debug\net6.0-windows\SixLabors.Fonts.dll
+C:\Users\urbai\source\repos\gvi\gvi\bin\Debug\net6.0-windows\System.IO.Packaging.dll
