@@ -133,7 +133,7 @@ namespace gvi {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/gvi;V1.0.0.0;component/forms/valeurinactiveform.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/gvi;component/forms/valeurinactiveform.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Forms\ValeurInactiveForm.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

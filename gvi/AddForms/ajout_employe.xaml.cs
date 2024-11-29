@@ -182,10 +182,21 @@ namespace gvi
                 var result = MessageBox.Show("Confirmer la suppression", "SUPPRESSION", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
-                    _context.Employes.Remove(emp);
-                    _context.SaveChanges();
+                    
+                    try
+                    {
+                        _context.Employes.Remove(emp);
+                        _context.SaveChanges();
+                        ClearFields();
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show($"Erreur lors de la suppression {ex.Message}","ERREUR",MessageBoxButton.OK);
+                        return;
+                    }
+                    
                     MessageBox.Show("L'employé a été supprimé avec succès.");
-                    ClearFields();
+                   
                 }
             }
             else

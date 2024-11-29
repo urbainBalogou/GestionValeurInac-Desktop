@@ -165,6 +165,30 @@ namespace gvi
                 }, null, 300, System.Threading.Timeout.Infinite);
             }
         }
+        private void FilterByDates()
+        {
+            var startDate = datePickerStart.SelectedDate;
+            var endDate = datePickerEnd.SelectedDate;
+
+            var filteredSorties = _context.Sorties
+                .Include(d => d.Commune)
+                .Include(d => d.Valeurs)
+                .ThenInclude(dv => dv.Valeur) // Inclure les détails de la valeur inactive
+                   .ThenInclude(v => v.TypeValeur) // Inclure les détails du type de valeur
+                   .AsEnumerable() // Convertir en IEnumerable pour utiliser LINQ en mémoire
+                .Where(d => (!startDate.HasValue || d.DateSortie >= startDate.Value) &&
+                            (!endDate.HasValue || d.DateSortie <= endDate.Value))
+                .Select(d => new
+                {
+                    Commune = d.Commune?.Nom ?? "Non spécifiée",
+                    Valeurs = string.Join(", ", d.Valeurs.Select(v => v.Valeur?.TypeValeur?.Nature ?? "Non spécifiée")),
+                    Quantites = string.Join(", ", d.Valeurs.Select(v => v.Quantite.ToString())),
+                    DateSortie = d.DateSortie.ToString("dd/MM/yyyy")
+                })
+                .ToList();
+
+            listViewSorties.ItemsSource = filteredSorties;
+        }
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
@@ -183,6 +207,11 @@ namespace gvi
                 ajout.ShowDialog();
                 LoadSorties(); // Recharger la liste après modifications éventuelles
             }
+        }
+
+        private void btnfiltre_Click(object sender, RoutedEventArgs e)
+        {
+            FilterByDates();
         }
     }
 }

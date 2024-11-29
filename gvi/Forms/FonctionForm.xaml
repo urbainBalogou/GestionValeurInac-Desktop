@@ -7,18 +7,43 @@
         mc:Ignorable="d"
         Icon="/Authentification/Armoiries-du-Togo.png"
        Title="Fonction" Height="500" Width="900"  WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!-- Style pour les labels qui agissent comme des liens -->
+        <Style x:Key="LinkLabelStyle" TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="0" Color="#FF707070"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FFFFA500"/>
+                    <!-- Changer de couleur au survol -->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
 
     <DockPanel LastChildFill="False">
         <StackPanel DockPanel.Dock="Left"   Width="137" Background="#FF1288F0">
 
-            <Label x:Name="type_val" Content="Type valeur" Foreground="White"  Height="35"  FontWeight="Bold" FontSize="14" MouseLeftButtonDown="type_val_MouseLeftButtonDown"/>
-            <Label x:Name="txtvaleur" Content="Valeur Inactive" Foreground="White"  Height="35"  FontWeight="Bold" FontSize="14" MouseLeftButtonDown="txtvaleur_MouseLeftButtonDown"/>
-            <Label x:Name="txtcommune" Content="Commune"  Height="35" Foreground="White"  FontWeight="Bold" FontSize="14" MouseLeftButtonDown=" txtcommune_MouseLeftButtonDown"/>
-            <Label x:Name="txtdemandes" Content="Demandes" Height="35" Foreground="White" FontWeight="Bold" FontSize="14" MouseLeftButtonDown="txtdemandes_MouseLeftButtonDown"/>
+            <Label x:Name="type_val" Content="Type valeur" Style="{StaticResource LinkLabelStyle}"   Height="35" MouseLeftButtonDown="type_val_MouseLeftButtonDown"/>
+            <Label x:Name="txtvaleur" Content="Valeur Inactive" Style="{StaticResource LinkLabelStyle}"  Height="35"  FontSize="14" MouseLeftButtonDown="txtvaleur_MouseLeftButtonDown"/>
+            <Label x:Name="txtcommune" Content="Commune"  Height="35" Style="{StaticResource LinkLabelStyle}" FontSize="14" MouseLeftButtonDown=" txtcommune_MouseLeftButtonDown"/>
+            <Label x:Name="txtdemandes" Content="Demandes" Height="35" Style="{StaticResource LinkLabelStyle}"  FontSize="14" MouseLeftButtonDown="txtdemandes_MouseLeftButtonDown"/>
 
-            <Label x:Name="sorties" Content="Sorties" Height="35" Foreground="White" FontWeight="Bold" FontSize="14"  FontStyle="Normal" MouseLeftButtonDown="sorties_MouseLeftButtonDown"/>
-            <Label x:Name="employe" Content="Employés" Height="35" Foreground="White" FontWeight="Bold" FontSize="14"  FontStyle="Normal" MouseLeftButtonDown="employe_MouseLeftButtonDown"/>
-            <Label x:Name="txtentree" Content="Entrées" Height="35" Foreground="White" FontWeight="Bold" FontSize="14"  FontStyle="Normal" MouseLeftButtonDown="txtentree_MouseLeftButtonDown"/>
+            <Label x:Name="sorties" Content="Sorties" Height="35" Style="{StaticResource LinkLabelStyle}"     FontStyle="Normal" MouseLeftButtonDown="sorties_MouseLeftButtonDown"/>
+            <Label x:Name="employe" Content="Employés" Height="35" Style="{StaticResource LinkLabelStyle}"   FontSize="14"  FontStyle="Normal" MouseLeftButtonDown="employe_MouseLeftButtonDown"/>
+            <Label x:Name="txtentree" Content="Entrées" Height="35" Style="{StaticResource LinkLabelStyle}"  FontWeight="Bold" FontSize="14"  FontStyle="Normal" MouseLeftButtonDown="txtentree_MouseLeftButtonDown"/>
 
         </StackPanel>
         <Canvas Width="662">

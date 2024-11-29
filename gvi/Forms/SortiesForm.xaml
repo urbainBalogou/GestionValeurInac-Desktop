@@ -7,17 +7,41 @@
         mc:Ignorable="d"
         Icon="/Authentification/Armoiries-du-Togo.png"
         Title="Sortie" MinHeight="500" Width="1103" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-
+    <Window.Resources>
+        <!-- Style pour les labels qui agissent comme des liens -->
+        <Style x:Key="LinkLabelStyle" TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="0" Color="#FF707070"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FFFFA500"/>
+                    <!-- Changer de couleur au survol -->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <DockPanel LastChildFill="False">
         <!-- Menu de navigation sur la gauche -->
         <StackPanel DockPanel.Dock="Left" Width="137" Background="#FF1288F0">
-            <Label x:Name="type_val" Content="Type valeur" Foreground="White" Height="35" FontWeight="Bold" FontSize="14" MouseLeftButtonDown="type_val_MouseLeftButtonDown"/>
-            <Label x:Name="txtvaleur" Content="Valeur Inactive" Foreground="White" Height="35" FontWeight="Bold" FontSize="14" MouseLeftButtonDown="txtvaleur_MouseLeftButtonDown"/>
-            <Label x:Name="txtcommune" Content="Commune" Foreground="White" Height="35" FontWeight="Bold" FontSize="14" MouseLeftButtonDown="txtcommune_MouseLeftButtonDown"/>
-            <Label x:Name="txtdemandes" Content="Demandes" Foreground="White" Height="35" FontWeight="Bold" FontSize="14" MouseLeftButtonDown="txtdemandes_MouseLeftButtonDown"/>
-            <Label x:Name="txtentree" Content="Entrées" Height="35" Foreground="White" FontWeight="Bold" FontSize="14" FontStyle="Normal" MouseLeftButtonDown="txtentree_MouseLeftButtonDown"/>
-            <Label x:Name="employe" Content="Employés" Height="35" Foreground="White" FontWeight="Bold" FontSize="14" FontStyle="Normal" MouseLeftButtonDown="employe_MouseLeftButtonDown"/>
-            <Label x:Name="txtfonc" Content="Fonctions" Height="35" Foreground="White" FontWeight="Bold" FontSize="14" FontStyle="Normal" MouseLeftButtonDown="txtfonc_MouseLeftButtonDown"/>
+            <Label x:Name="type_val" Style="{StaticResource LinkLabelStyle}" Content="Type valeur"  MouseLeftButtonDown="type_val_MouseLeftButtonDown"/>
+            <Label x:Name="txtvaleur" Style="{StaticResource LinkLabelStyle}" Content="Valeur Inactive" MouseLeftButtonDown="txtvaleur_MouseLeftButtonDown"/>
+            <Label x:Name="txtcommune" Style="{StaticResource LinkLabelStyle}" Content="Commune" MouseLeftButtonDown="txtcommune_MouseLeftButtonDown"/>
+            <Label x:Name="txtdemandes" Style="{StaticResource LinkLabelStyle}" Content="Demandes"  MouseLeftButtonDown="txtdemandes_MouseLeftButtonDown"/>
+            <Label x:Name="txtentree" Style="{StaticResource LinkLabelStyle}" Content="Entrées" Height="35"  MouseLeftButtonDown="txtentree_MouseLeftButtonDown"/>
+            <Label x:Name="employe" Style="{StaticResource LinkLabelStyle}" Content="Employés" Height="35" MouseLeftButtonDown="employe_MouseLeftButtonDown"/>
+            <Label x:Name="txtfonc" Style="{StaticResource LinkLabelStyle}" Content="Fonctions" Height="35" MouseLeftButtonDown="txtfonc_MouseLeftButtonDown"/>
         </StackPanel>
 
         <!-- Contenu principal -->
@@ -32,7 +56,7 @@
             <DatePicker x:Name="datePickerStart" Canvas.Left="80" Canvas.Top="45" Width="150"/>
             <Label Content="Date fin:" Canvas.Left="250" Canvas.Top="45" FontWeight="Bold"/>
             <DatePicker x:Name="datePickerEnd" Canvas.Left="320" Canvas.Top="45" Width="150"/>
-            <Button Content="Filtrer" Canvas.Left="480" Canvas.Top="45" Width="80"/>
+            <Button x:Name="btnfiltre" Content="Filtrer" Canvas.Left="480" Canvas.Top="45" Width="80" Click="btnfiltre_Click"/>
 
             <!-- Bouton Imprimer -->
             <Button x:Name="btnPrint" Content="Imprimer" Canvas.Left="570" Canvas.Top="45" Width="80" Click="btnPrint_Click"/>

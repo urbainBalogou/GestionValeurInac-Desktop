@@ -107,7 +107,7 @@ namespace gvi
         {
             ComboBoxCommune.SelectedIndex = -1;
             ValeursSelectionnees.Clear();
-            datepic.
+           
         }
 
       

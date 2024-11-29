@@ -19,7 +19,7 @@ public class Utilisateur
     // Méthode pour hacher le mot de passe
     public void SetPassword(string password)
     {
-        // Utiliser une fonction de hachage ici (ex : SHA-256, BCrypt, etc.)
+        // Appel de la fonction de hachage 
         PasswordHash = HashPassword(password);
     }
 

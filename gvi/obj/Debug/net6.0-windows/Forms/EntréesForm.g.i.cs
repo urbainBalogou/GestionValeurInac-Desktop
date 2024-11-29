@@ -141,7 +141,7 @@ namespace gvi {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/gvi;V1.0.0.0;component/forms/entr%c3%a9esform.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/gvi;component/forms/entr%c3%a9esform.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Forms\EntréesForm.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

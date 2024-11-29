@@ -39,7 +39,7 @@
         <!-- Menu de navigation sur la gauche -->
         <StackPanel DockPanel.Dock="Left" Width="137" Background="#FF1288F0">
             <Label x:Name="type_val" Content="Type valeur" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="type_val_MouseLeftButtonDown"/>
-            <Label x:Name="txtvaleur" Content="Valeur Inactive" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="txtvaleur_MouseLeftButtonDown" Cursor="Hand"/>
+            <Label x:Name="txtvaleur" Content="Valeur Inactive" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="txtvaleur_MouseLeftButtonDown"/>
             <Label x:Name="txtentree" Content="Entrées" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="txtentree_MouseLeftButtonDown"/>
             <Label x:Name="txtcommune" Content="Commune" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="txtcommune_MouseLeftButtonDown"/>
             <Label x:Name="sorties" Content="Sorties" Style="{StaticResource LinkLabelStyle}" MouseLeftButtonDown="sorties_MouseLeftButtonDown"/>

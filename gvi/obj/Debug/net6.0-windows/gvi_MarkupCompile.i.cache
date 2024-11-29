@@ -16,5 +16,5 @@ C:\Users\urbai\source\repos\gvi\gvi\App.xaml
 223913435490
 AddForms\ajout_commune.xaml;AddForms\ajout_demande.xaml;AddForms\ajout_employe.xaml;AddForms\ajout_entree.xaml;AddForms\ajout_fonction.xaml;AddForms\ajout_sorties.xaml;AddForms\ajout_type.xaml;AddForms\ajout_valeur.xaml;Authentification\login.xaml;Authentification\signup.xaml;Forms\AdminInterface.xaml;Forms\CommuneForm.xaml;Forms\DemandesForm.xaml;Forms\EmployesForm.xaml;Forms\EntréesForm.xaml;Forms\FonctionForm.xaml;Forms\SortiesForm.xaml;Forms\StockageView.xaml;Forms\TypeValeurForm.xaml;Forms\ValeurInactiveForm.xaml;MainWindow.xaml;PrintForms\SortiePrint.xaml;UpdateForms\update_demande.xaml;UpdateForms\update_entree.xaml;UpdateForms\update_sortie.xaml;
 
-True
+False
 
